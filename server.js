@@ -1,10 +1,12 @@
-require('dotenv').config({ path: './config/config.env' })
-const express = require('express')
-const colors = require('colors')
-const errorHandler = require('./middlewares/error')
+require('dotenv').config({ path: './config/config.env' });
+const express = require('express');
+const colors = require('colors');
+const errorHandler = require('./middlewares/error');
+const connect = require('./config/connect');
 
 const app = express()
 
+connect()
 app.use(express.json())
 
 
