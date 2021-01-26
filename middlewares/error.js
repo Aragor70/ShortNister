@@ -13,7 +13,7 @@ const errorHandler = (err, req, res, next) => {
         error = new ErrorResponse(`This ${location} already exists.`, 400)
     }
 
-    // case of unhandled validation by express-validator
+    // case of unhandled validation by if statement
     if (err.name == "ValidationError") {
         
         const location = Object.values(err.errors).map(value => value.path).join(', ')
