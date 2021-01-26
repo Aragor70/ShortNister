@@ -15,6 +15,10 @@ const UrlSchema = new mongoose.Schema({
         required: true,
         minLength: 4
     },
+    views: {
+        type: Number,
+        default: 0
+    },
     date: {
         type: Date,
         default: Date.now

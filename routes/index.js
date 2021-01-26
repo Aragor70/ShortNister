@@ -16,6 +16,11 @@ router.get('/:code', asyncHandler( async(req, res, next) => {
     if (!urlAddress) {
         return next(new ErrorResponse('Address not found', 404))
     }
+    
+    urlAddress.views += 1
+
+    await urlAddress.save()
+
 
     return res.redirect(urlAddress.longUrl)
     
