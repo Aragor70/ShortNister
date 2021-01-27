@@ -7,37 +7,37 @@ const { nanoid } = require('nanoid');
 const Url = require('../../models/Url');
 
 
-//route POST    api/url
+//route POST   api/url
 //description  test route
 //access       private
 router.post('/', asyncHandler( async(req, res, next) => {
    
-    const { longUrl, customUrl } = req.body;
+    const { longUrl, customCode } = req.body;
 
     let shortCode;
 
-    let urlAddress = await Url.findOne({ longUrl })
-
-    if (urlAddress) {
-        return res.json(urlAddress)
-    }
-
     if (!validUrl.isUri(longUrl)){
-        return next(new ErrorResponse('Please enter valid URL address', 422))
+        return next(new ErrorResponse('Please enter valid URL address.', 422))
     }
-    if (customUrl && customUrl.length < 4){
-        return next(new ErrorResponse('Please enter short URL at least 4 characters long', 422))
+    if (customCode && customCode.length < 4){
+
+        return next(new ErrorResponse('Please enter short URL at least 4 characters long.', 422))
     }
 
-    if (customUrl) {
-        shortCode = customUrl
+    if (customCode) {
+        shortCode = customCode
     } else {
         shortCode = nanoid(6)
     }
 
+    let isMatch = await Url.findOne({ urlCode: shortCode })
+    if (isMatch) {
+        return next(new ErrorResponse('Your code already exists. Please enter the new one.', 422))
+    }
+
     const newAddress = process.env.Base_Url + '/' + shortCode
 
-    urlAddress = new Url({
+    const urlAddress = new Url({
         urlCode: shortCode,
         longUrl,
         shortUrl: newAddress
@@ -46,7 +46,7 @@ router.post('/', asyncHandler( async(req, res, next) => {
     await urlAddress.save()
     
 
-    return res.json(urlAddress)
+    return res.json({success: true, urlAddress})
 }));
 
 
