@@ -1,10 +1,27 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, InputHTMLAttributes, useState } from 'react';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { postUrl } from '../actions/url';
 
+type IndexType = {
+    history: any
+}
 
+const Index = ({ history }: IndexType) => {
 
-const Index = () => {
+    const [formData, setFormData] = useState({
+        longUrl: '',
+        customCode: ''
+    });
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({...formData, [e.target.name]: e.target.value })
+    }
 
+    const handleSubmit = async(e: React.SyntheticEvent) => {
+        e.preventDefault();
+        const res = await postUrl(formData, history)
+        console.log(res, 'output')
+    }
 
     return (
         <Fragment>
@@ -16,11 +33,11 @@ const Index = () => {
 
 
 
-                <form className="input-form">
+                <form className="input-form" onSubmit={e=> handleSubmit(e)}>
                     <p>Paste address URL</p>
-                    <input type="text" />
+                    <input type="text" name="longUrl" onChange={e=> handleChange(e)} required />
 
-                    <button type="button" className="randomize">
+                    <button type="submit" className="randomize">
                         Generate random shortcut
                     </button>
 
@@ -28,7 +45,7 @@ const Index = () => {
 
                     <label>
                         <p>Customize your own</p>
-                        <input type="text" />
+                        <input type="text" name="customCode" onChange={e=> handleChange(e)} />
                     </label>
                     <button type="submit">
                         Continue
@@ -39,4 +56,4 @@ const Index = () => {
         </Fragment>
     );
 }
-export default Index;
+export default withRouter(Index);

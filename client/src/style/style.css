@@ -29,6 +29,7 @@ a, button, input
     color: #121212;
     text-decoration: none;
     border-radius: 7.5px;
+    transition: all 0.3s ease-in;
 }
 
 a, button

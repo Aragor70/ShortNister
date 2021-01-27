@@ -1,18 +1,20 @@
 import React, { Fragment } from 'react';
+import { withRouter } from 'react-router-dom';
 
+type HeaderProps = {
+    history: any
+}
 
-
-const Header = () => {
-
+const Header = ({ history }: HeaderProps ) => {
 
 
 
     return (
         <Fragment>
             <div className="header-content">
-                <h1>Shortster</h1>
+                <h1 onClick={e=> history.push('/')}>Shortster</h1>
             </div>
         </Fragment>
     );
 }
-export default Header;
+export default withRouter(Header);

@@ -1,0 +1,13 @@
+.options
+{
+    width:100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.options button
+{
+    margin: 15px;
+}
