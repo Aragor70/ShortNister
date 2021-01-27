@@ -17,7 +17,6 @@ const Overview = ({ match, history }: OverviewProps) => {
     
     const handleCopy = (address: string) => {
         copy(address)
-        console.log('copy success')
     }
 
     return (
@@ -28,7 +27,7 @@ const Overview = ({ match, history }: OverviewProps) => {
                     Your shortcut URL is:
                     <p style={{textAlign: 'center'}} onClick={e=> handleCopy(url)}>
                     
-                        http://localhost:5000/{match.params.code}
+                        <span className="weightBold">http://localhost:5000/{match.params.code}</span>
                     
                     </p>
                     <div className="options">

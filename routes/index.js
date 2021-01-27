@@ -26,21 +26,6 @@ router.get('/:code', asyncHandler( async(req, res, next) => {
     
 }));
 
-//route GET    api/url/stats
-//description  get url statisctics 
-//access       private
-router.get('/:code/stats', asyncHandler( async(req, res, next) => {
-    
-    const { code } = req.params;
 
-    const urlAddress = await Url.findOne({ urlCode: code });
-
-    if (!urlAddress) {
-        return next(new ErrorResponse('Address not found', 404))
-    }
-    
-    return res.json(urlAddress)
-    
-}));
 
 module.exports = router;

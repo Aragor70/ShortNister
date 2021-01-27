@@ -1,6 +1,8 @@
-import React, { Fragment, InputHTMLAttributes, useState } from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import { postUrl } from '../actions/url';
+import validUrl from 'valid-url'
+import Toplist from './Toplist';
 
 type IndexType = {
     history: any
@@ -8,6 +10,7 @@ type IndexType = {
 
 const Index = ({ history }: IndexType) => {
 
+    const [isValid, setIsValid] = useState(false)
     const [formData, setFormData] = useState({
         longUrl: '',
         customCode: ''
@@ -19,9 +22,16 @@ const Index = ({ history }: IndexType) => {
 
     const handleSubmit = async(e: React.SyntheticEvent) => {
         e.preventDefault();
-        const res = await postUrl(formData, history)
-        console.log(res, 'output')
+        await postUrl(formData, history)
     }
+    useEffect(() => {
+
+        if (validUrl.isUri(formData.longUrl)){
+            return setIsValid(true)
+        } else {
+            return setIsValid(false)
+        }
+    }, [formData.longUrl])
 
     return (
         <Fragment>
@@ -34,24 +44,41 @@ const Index = ({ history }: IndexType) => {
 
 
                 <form className="input-form" onSubmit={e=> handleSubmit(e)}>
-                    <p>Paste address URL</p>
-                    <input type="text" name="longUrl" onChange={e=> handleChange(e)} required />
+                    <p style={{ position: 'relative' }}>Paste address URL
 
-                    <button type="submit" className="randomize">
-                        Generate random shortcut
-                    </button>
+                    {
+                        formData.longUrl.length > 0 && <button type="button" className="clean-button" onClick={e=> setFormData({ longUrl: '', customCode: ''})}>cancel</button>
+                    }
+                    </p>
 
-                    <p>or</p>
+                    <input type="text" name="longUrl" value={ formData.longUrl || '' } onChange={e=> handleChange(e)} required />
+                    {
+                        formData.longUrl.length > 0 && isValid ? <Fragment>
+                            <p>Create a random 6 characters long URL shortcut</p>
+                            <button type="submit" className="randomize">
+                                Generate random shortcut
+                            </button>
 
-                    <label>
-                        <p>Customize your own</p>
-                        <input type="text" name="customCode" onChange={e=> handleChange(e)} />
-                    </label>
-                    <button type="submit">
-                        Continue
-                    </button>
+                            <p>or</p>
 
+                            <label>
+                                <p>Customize your URL shortcut (at least 4 characters long)</p>
+                                <p>http://localhost:5000/
+                                    <input type="text" name="customCode" value={ formData.customCode || '' } onChange={e=> handleChange(e)} />
+                                </p>
+                            </label>
+                            <button type="submit">
+                                Continue
+                            </button>
+                        </Fragment>
+                        : null
+                    }
+                    
                 </form>
+
+                <Toplist />
+
+
             </div>
         </Fragment>
     );

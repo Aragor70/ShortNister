@@ -67,6 +67,16 @@ h1
     padding:0;
 }
 
+.textCenter
+{
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
 
-
+.weightBold
+{
+    font-weight: bold;
+}
 

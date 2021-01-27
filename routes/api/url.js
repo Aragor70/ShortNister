@@ -8,15 +8,33 @@ const Url = require('../../models/Url');
 
 
 
+
 //route GET    api/url/stats
 //description  get top 3 list of urls
 //access       private
 router.get('/', asyncHandler( async(req, res, next) => {
 
-    const urlAddresses = await Url.find({ urlCode: code }).sort({ date: -1 }).limit(3);
-
+    
+    const urlAddresses = await Url.find().sort({ date: -1 }).limit(3);
     
     return res.json(urlAddresses)
+    
+}));
+
+//route GET    api/url/stats
+//description  get url statisctics 
+//access       private
+router.get('/:code/stats', asyncHandler( async(req, res, next) => {
+    
+    const { code } = req.params;
+
+    const urlAddress = await Url.findOne({ urlCode: code });
+
+    if (!urlAddress) {
+        return next(new ErrorResponse('Address not found', 404))
+    }
+    
+    return res.json(urlAddress)
     
 }));
 

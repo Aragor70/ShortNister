@@ -5,6 +5,33 @@ type formType = {
     customCode?: string
 }
 
+export const getURLs = async() => {
+
+    try {
+        console.log('go')
+        const res = await axios.get('/api/url')
+        
+        return res.data
+
+    } catch (err) {
+        console.log(err.message)
+        
+    }
+}
+
+export const getStats = async(code: string) => {
+
+    try {
+
+        const res = await axios.get(`/api/url/${code}/stats`)
+        
+        return res.data
+
+    } catch (err) {
+        console.log(err.message)
+        
+    }
+}
 
 export const postUrl = async(formData: formType, history: any) => {
 
@@ -21,7 +48,8 @@ export const postUrl = async(formData: formType, history: any) => {
         return res
 
     } catch (err) {
-        console.log(err)
+        console.log(err.message)
+        
         
     }
 }
