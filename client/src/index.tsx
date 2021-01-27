@@ -4,6 +4,14 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+// css section
+import './style/style.css';
+import './style/header.css';
+import './style/output.css';
+import './style/index.css';
+
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>

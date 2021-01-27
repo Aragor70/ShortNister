@@ -27,7 +27,7 @@ router.get('/:code', asyncHandler( async(req, res, next) => {
 }));
 
 //route GET    api/url/stats
-//description  redirect from short URL to original URL
+//description  get url statisctics 
 //access       private
 router.get('/:code/stats', asyncHandler( async(req, res, next) => {
     

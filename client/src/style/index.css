@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+.input-form
+{
+    width: 100%;
+    height: auto;
+
+
+}
+
+.input-form input
+{
+    width: 100%;
+    height: auto;
+    font-size: 22px;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}
+.randomize
+{
+    width: 75%;
+    height: auto;
+    font-size: 22px;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}

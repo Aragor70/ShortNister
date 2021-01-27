@@ -7,6 +7,19 @@ const { nanoid } = require('nanoid');
 const Url = require('../../models/Url');
 
 
+
+//route GET    api/url/stats
+//description  get top 3 list of urls
+//access       private
+router.get('/', asyncHandler( async(req, res, next) => {
+
+    const urlAddresses = await Url.find({ urlCode: code }).sort({ date: -1 }).limit(3);
+
+    
+    return res.json(urlAddresses)
+    
+}));
+
 //route POST   api/url
 //description  test route
 //access       private
