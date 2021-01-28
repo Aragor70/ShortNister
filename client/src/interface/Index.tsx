@@ -76,7 +76,7 @@ const Index = ({ history }: IndexType) => {
                     
                 </form>
 
-                <Toplist />
+                
 
 
             </div>

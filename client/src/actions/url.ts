@@ -8,7 +8,7 @@ type formType = {
 export const getURLs = async() => {
 
     try {
-        console.log('go')
+        
         const res = await axios.get('/api/url')
         
         return res.data

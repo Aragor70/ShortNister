@@ -13,7 +13,7 @@ import './style/overview.css';
 
 
 
-ReactDOM.render(
+export default ReactDOM.render(
   <React.StrictMode>
     <Router>
       <App />

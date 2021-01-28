@@ -13,26 +13,25 @@ const Toplist = () => {
 
     const [urls, setUrls] = useState([])
 
-    const openUrl = (address: string) => {
-        return window.open(address, "_blank")
-    }
-
     
     useEffect(() => {
+
         const getArray = async() => {
-            const res = await getURLs()
+            const res: any = await getURLs()
             
-            setUrls(res)
+            return setUrls(res)
         }
+
         getArray()
-    }, [])
+
+    }, [urls])
 
     return (
         <Fragment>
             <div className="section-content">
                 <p>Top 3 URLs</p>
                 {
-                    urls.length === 0 ? 'Empty list' : urls.map((url: Url) => <p className="textCenter" ><span onClick={e => openUrl(url.shortUrl)}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
+                    urls.length === 0 ? 'Empty list' : urls.map((url: Url) => <p className="textCenter" ><span onClick={e => window.open(url.shortUrl, "_blank")}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
                 }
             </div>
         </Fragment>
