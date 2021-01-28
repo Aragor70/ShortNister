@@ -28,8 +28,6 @@ describe("test App component", () => {
             </Router>
         , div);
         ReactDOM.unmountComponentAtNode(div)
-        
-        
     });
     it("compoent render jsx tags correctly", () => {
         
