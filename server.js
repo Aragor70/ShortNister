@@ -12,7 +12,7 @@ conn.connect()
 app.use(express.json())
 
 const index = app.use('/', require('./routes/index'));
-const url = app.use('/api/url', require('./routes/api/url'));
+const urls = app.use('/api/urls', require('./routes/api/urls'));
 
 // handle errors
 app.use(errorHandler)
@@ -27,4 +27,4 @@ process.on('unhandledRejection', (err, _promise) => {
     server.close(() => process.exit(1))
 })
 
-module.exports = { index, url }
+module.exports = { index, urls }

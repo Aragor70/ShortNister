@@ -9,7 +9,7 @@ const Url = require('../../models/Url');
 
 
 
-//route GET    api/url/stats
+//route GET    api/urls/
 //description  get top 3 list of urls
 //access       private
 router.get('/', asyncHandler( async(req, res, next) => {
@@ -21,7 +21,7 @@ router.get('/', asyncHandler( async(req, res, next) => {
     
 }));
 
-//route GET    api/url/stats
+//route GET    api/urls/stats
 //description  get url statisctics 
 //access       private
 router.get('/:code/stats', asyncHandler( async(req, res, next) => {
@@ -38,8 +38,8 @@ router.get('/:code/stats', asyncHandler( async(req, res, next) => {
     
 }));
 
-//route POST   api/url
-//description  test route
+//route POST   api/urls
+//description  post new URL address
 //access       private
 router.post('/', asyncHandler( async(req, res, next) => {
    
