@@ -21,11 +21,12 @@ const Toplist = () => {
             
             return setUrls(res)
         }
-
         getArray()
-
-    }, [urls])
-
+        return () => {
+            setUrls([])
+        }
+    }, [])
+    
     return (
         <Fragment>
             <div className="section-content">

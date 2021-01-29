@@ -28,6 +28,14 @@ const Stats = ({ match }: StatsProps) => {
         }
         getData()
 
+        return () => {
+            setData({
+                longUrl: '',
+                shortUrl: '',
+                views: ''
+            })
+        }
+
     }, [match.params.code])
 
 
