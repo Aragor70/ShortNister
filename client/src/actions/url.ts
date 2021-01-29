@@ -9,7 +9,7 @@ export const getURLs = async() => {
 
     try {
         
-        const res = await axios.get('/api/url')
+        const res = await axios.get('/api/urls')
         
         return res.data
 
@@ -23,7 +23,7 @@ export const getStats = async(code: string) => {
 
     try {
 
-        const res = await axios.get(`/api/url/${code}/stats`)
+        const res = await axios.get(`/api/urls/${code}/stats`)
         
         return res.data
 
@@ -42,7 +42,7 @@ export const postUrl = async(formData: formType, history: any) => {
     }
     try {
 
-        const res = await axios.post('/api/url', formData, config)
+        const res = await axios.post('/api/urls', formData, config)
         
         history.push(`/${res.data.urlAddress.urlCode}/overview`)
         return res
