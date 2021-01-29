@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 const UrlSchema = new mongoose.Schema({
     urlCode: {
         type: String,
-        required: true
+        required: true,
+        minLength: 4
     },
     longUrl: {
         type: String,
@@ -12,8 +13,7 @@ const UrlSchema = new mongoose.Schema({
     },
     shortUrl: {
         type: String,
-        required: true,
-        minLength: 4
+        required: true
     },
     views: {
         type: Number,

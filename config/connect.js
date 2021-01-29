@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const connect = async () => {
     try {
         
@@ -13,8 +12,8 @@ const connect = async () => {
 
             await mockgoose.prepareStorage()
             
-            await mongoose.connect(console.info("Finished, exiting process".green))
-            
+            await mongoose.connect("mongodb://localhost/test")
+            console.info("Finished, exiting process".green)
             console.log('TestDB connected...'.green)
             console.log(`Testing host: ${mongoose.connection.host}.`.green)
 

@@ -72,7 +72,7 @@ router.post('/', asyncHandler( async(req, res, next) => {
         urlCode: shortCode,
         longUrl,
         shortUrl: newAddress
-    })
+    });
 
     await urlAddress.save()
     
