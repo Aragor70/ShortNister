@@ -4,7 +4,7 @@ const ErrorResponse = require('../tools/errorResponse');
 const router = express.Router();
 const Url = require('../models/Url');
 
-//route GET    api/url
+//route GET    /:code
 //description  redirect from short URL to original URL
 //access       private
 router.get('/:code', asyncHandler( async(req, res, next) => {

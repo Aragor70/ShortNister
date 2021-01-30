@@ -29,7 +29,7 @@ router.get('/:code/stats', asyncHandler( async(req, res, next) => {
     const { code } = req.params;
 
     const urlAddress = await Url.findOne({ urlCode: code });
-
+    console.log(urlAddress)
     if (!urlAddress) {
         return next(new ErrorResponse('Address not found', 404))
     }

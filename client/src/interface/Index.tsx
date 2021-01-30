@@ -51,7 +51,7 @@ const Index = ({ history }: IndexType) => {
                     }
                     </p>
 
-                    <input type="text" name="longUrl" value={ formData.longUrl || '' } onChange={e=> handleChange(e)} required />
+                    <input type="text" name="longUrl" value={ formData.longUrl || '' } onChange={e=> handleChange(e)} required placeholder=" .Here" />
                     {
                         formData.longUrl.length > 0 && isValid ? <Fragment>
                             <p>Create a random 6 characters long URL shortcut</p>

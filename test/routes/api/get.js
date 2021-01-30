@@ -9,15 +9,19 @@ describe('Test GET /api/urls', () => {
 
     before((done) => {
         conn.connect()
+            .then(() => done())
+            .catch((err) => done(err));
+    });
+    
+    before((done) => {
+        const codes = ['ABCDEFG', 'ABCDE', 'ABCD', 'ABCD']
 
-            const codes = ['ABCDEFG', 'ABCDEF', 'ABCDE', 'ABCD', 'ABCD']
-
-            for (let i = 0; i < 5; i++) {
-                request(router.urls).post('/api/urls')
+        for (let i = 0; i < 4; i++) {
+            request(router.urls).post('/api/urls')
                 .send({ longUrl: "https://github.com/Aragor70/Shortster", customCode: codes[i] })
                 .catch((err) => done(err));
-            }
-            done()
+        }
+        done();
         
     })
     
@@ -25,27 +29,55 @@ describe('Test GET /api/urls', () => {
         conn.close()
             .then(() => done())
             .catch((err) => done(err));
-    })
+    });
 
 
-    it ('For Fail, Get URLs Stats of wrong URLs Code', (done) => {
+    it ('For Success, Get Stats of URLs Code', (done) => {
 
+        request(router.urls).post('/api/urls')
+            .send({ longUrl: "https://github.com/Aragor70/Shortster", customCode: 'ABCDEF' }).then(() => {
 
-        request(router.urls).get('/api/urls/ABCDEF/stats')
-        .then((response) => {
+            request(router.urls).get('/api/urls/ABCDEF/stats/')
+                .then((response) => {
+                
+                    expect(response.statusCode).to.equal(200)
+                    
+                    const body = response.body
+                    
+                    expect(body).to.contain.property('_id');
+                    expect(body).to.contain.property('urlCode');
+                    expect(body).to.contain.property('longUrl');
+                    expect(body).to.contain.property('shortUrl');
+                    expect(body).to.contain.property('views');
+                    expect(body).to.contain.property('date');
+        
+                    done();
+                
+                }).catch((err) => done(err));
             
-            expect(response.statusCode).to.equal(404)
-            
-            const body = response.body
-            
-            expect(body).to.contain.property('success')
-            expect(body).to.contain.property('message')
+        })
+        .catch((err) => done(err));
+    });
+    
 
-            expect(body.success).to.equal(false)
-            expect(body.message).to.equal("Address not found")
+    it ('For Fail, Get Error msg for Stats of wrong URLs Code', (done) => {
 
-            done()
-        }).catch((err) => done(err));
+
+        request(router.urls).get('/api/urls/Wrong_URL_Code/stats/')
+            .then((response) => {
+                
+                expect(response.statusCode).to.equal(404);
+                
+                const body = response.body;
+                
+                expect(body).to.contain.property('success');
+                expect(body).to.contain.property('message');
+
+                expect(body.success).to.equal(false);
+                expect(body.message).to.equal('Address not found');
+
+                done();
+            }).catch((err) => done(err));
         
     });
 
@@ -53,32 +85,56 @@ describe('Test GET /api/urls', () => {
 
 
         request(router.index).get('/ABCDEF')
-        .then((response) => {
-            
-            expect(response.statusCode).to.equal(302)
-            expect(response.text).to.equal('Found. Redirecting to https://github.com/Aragor70/Shortster')
-            
-            const header = response.header
-            expect(header.location).to.equal('https://github.com/Aragor70/Shortster')
-            
-            
-            done()
-        }).catch((err) => done(err));
+            .then((response) => {
+                
+                expect(response.statusCode).to.equal(302)
+                expect(response.text).to.equal('Found. Redirecting to https://github.com/Aragor70/Shortster')
+                
+                const header = response.header
+                expect(header.location).to.equal('https://github.com/Aragor70/Shortster')
+                
+                
+                done()
+            }).catch((err) => done(err));
         
     });
+
+    it ('For Fail, Get redirect, print error', (done) => {
+
+
+        request(router.index).get('/Wrong_URL')
+            .then((response) => {
+
+                expect(response.statusCode).to.equal(404);
+                const body = response.body
+                
+                expect(body).to.contain.property('success');
+                expect(body).to.contain.property('message');
+
+                expect(body.success).to.equal(false);
+                expect(body.message).to.equal('Address not found');
+                
+                
+                
+                done()
+            }).catch((err) => done(err));
+        
+    });
+
 
     it ('For Success, Get list of Top 3 URLs from the list of 5 or more', (done) => {
 
 
         request(router.urls).get('/api/urls/')
-        .then((response) => {
-            
-            const text = response.body
-            expect(text.length).to.equal(3)
+            .then((response) => {
+                
+                const text = response.body;
+                expect(text.length).to.equal(3);
 
-            done()
-        }).catch((err) => done(err));
+                done();
+            }).catch((err) => done(err));
         
     });
+
 
 });

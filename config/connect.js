@@ -12,9 +12,15 @@ const connect = async () => {
 
             await mockgoose.prepareStorage()
             
-            await mongoose.connect("mongodb://localhost/test")
-            console.info("Finished, exiting process".green)
-            console.log('TestDB connected...'.green)
+            await mongoose.connect("mongodb://localhost/test", {
+                useNewUrlParser: true,
+                useCreateIndex: true,
+                useFindAndModify: false,
+                useUnifiedTopology: true
+            })
+            
+            console.log('TestDB connected...'.blue)
+            console.log('Any API changes will not be saved.'.blue)
             console.log(`Testing host: ${mongoose.connection.host}.`.green)
 
         } else {
@@ -29,8 +35,6 @@ const connect = async () => {
             console.log(connect.connection.host)
 
         }
-
-        
     } catch (err) {
         console.error(err.message)
         process.exit(1)
