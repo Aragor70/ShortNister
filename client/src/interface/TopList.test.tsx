@@ -1,36 +1,34 @@
 import { mount, shallow } from 'enzyme';
-import Overview from './Overview';
+import Toplist from './Toplist';
 import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import App from '../App';
 
-describe("Test Overview component", () => {
+describe("Test Toplist component", () => {
     
 
-    const route = "/Unknown_Code/overview"
+    const route = "/"
     let history = createMemoryHistory({ initialEntries: [route] })
 
     const mountComponent = mount(
         <Router history={history} >
-            <Overview 
-                match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/overview", url: "" }}
-            />
+            <Toplist />
         </Router>
     );
 
 
-    it("For success, Render Overview 1 component correctly", () => {
+    it("For success, Render Toplist 1 component correctly", () => {
         expect(mountComponent).toHaveLength(1);
         expect(mountComponent.find('.section-content')).toHaveLength(1);
 
     });
 
-    it("For fail, Render Error message when address is not found", () => {
+    it("For fail, Render message when list is empty, no address was found", () => {
         
-        const x = 'Address not found.'
+        const x = 'The list is empty'
         expect(mountComponent.text()).toContain(x)
         
-
+        
     });
 
 });

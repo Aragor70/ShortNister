@@ -5,23 +5,15 @@ import { mount, shallow } from 'enzyme';
 import App from './App';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
-import Toplist from './interface/Toplist';
 
-describe("test App component", () => {
+describe("Test App component", () => {
 
     const history = createBrowserHistory()
     
     let component: any;
 
-
-    beforeEach(() => {
-        component = shallow(
-        <Router history={history}>
-            <App />
-        </Router>)
-    });
     
-    it("component renders one dom element", () => {
+    it("For success, Component renders one dom element", () => {
         
         const div = document.createElement('div');
 

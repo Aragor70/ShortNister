@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 
-describe("test Header component", () => {
+describe("Test Header component", () => {
 
     const history = createBrowserHistory();
 
@@ -15,7 +15,7 @@ describe("test Header component", () => {
             </Router>)
        
     
-    it("render Header 1 component correctly", () => {
+    it("For success, Render Header 1 component correctly", () => {
         expect(mountComponent).toHaveLength(1)
         expect(mountComponent.find('.header-content')).toHaveLength(1)
 

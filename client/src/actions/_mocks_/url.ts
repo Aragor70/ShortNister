@@ -1,30 +1,34 @@
 export const fakeData = [
     {
-        id: 1,
+        _id: 1,
         urlCode: "ABCD",
         longUrl: "https://github.com/Aragor70/Shortster",
         shortUrl: "https://localhost:5000/ABCD",
+        views: 2,
         date: 1
     },
     {
-        id: 2,
+        _id: 2,
         urlCode: "ABCDE",
         longUrl: "https://github.com/Aragor70/Shortster",
         shortUrl: "https://localhost:5000/ABCDE",
+        views: 2,
         date: 1
     },
     {
-        id: 3,
+        _id: 3,
         urlCode: "ABCDEF",
         longUrl: "https://github.com/Aragor70/Shortster",
         shortUrl: "https://localhost:5000/ABCDEF",
+        views: 2,
         date: 1
     },
     {
-        id: 4,
+        _id: 4,
         urlCode: "ABCDEFG",
         longUrl: "https://github.com/Aragor70/Shortster",
         shortUrl: "https://localhost:5000/ABCDEFG",
+        views: 2,
         date: 1
     }
 ];

@@ -60,10 +60,10 @@ describe('Test GET /api/urls', () => {
     });
     
 
-    it ('For Fail, Get Error msg for Stats of wrong URLs Code', (done) => {
+    it ('For Fail, Get Error msg for Stats of unknown URLs Code', (done) => {
 
 
-        request(router.urls).get('/api/urls/Wrong_URL_Code/')
+        request(router.urls).get('/api/urls/Unknown_Code/')
             .then((response) => {
                 
                 expect(response.statusCode).to.equal(404);
@@ -102,7 +102,7 @@ describe('Test GET /api/urls', () => {
     it ('For Fail, Get redirect, print error', (done) => {
 
 
-        request(router.index).get('/Wrong_URL')
+        request(router.index).get('/Unknown_Code')
             .then((response) => {
 
                 expect(response.statusCode).to.equal(404);

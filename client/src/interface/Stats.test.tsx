@@ -1,18 +1,18 @@
 import { mount, shallow } from 'enzyme';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import App from '../App';
+import Stats from './Stats';
 
 
 
-describe("test Header component", () => {
-    const route = "/hello/stats"
+describe("Test Stats component", () => {
+    const route = "/Unknown_Code/stats"
     const history = createMemoryHistory({ initialEntries: [route] })
 
     const mountComponent = mount(
         <Router history={history} >
-            <App 
-                match={{ params: {code: 'hello'}, isExact: true, path: "/hello/stats", url: "" }}
+            <Stats 
+                match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/stats", url: "" }}
             />
         </Router>
     );
@@ -31,5 +31,7 @@ describe("test Header component", () => {
         
 
     });
+
+    
 
 });

@@ -21,7 +21,7 @@ describe('Test Index component', () => {
 
 
 
-    it('Render Index component correctly', () => {
+    it('For success, Render Index component correctly', () => {
 
         // render component once
         expect(mountComponent).toHaveLength(1);
@@ -30,7 +30,7 @@ describe('Test Index component', () => {
 
     });
 
-    it('Render input-form correctly', () => {
+    it('For success, Render Long-URL input correctly', () => {
         expect(mountComponent.find('.input-form')).toHaveLength(1)
         
         expect(mountComponent.find('form')).toHaveLength(1)
@@ -43,7 +43,7 @@ describe('Test Index component', () => {
         
     });
 
-    it('Does not render complete form when longUrl is empty or not valid', () => {
+    it('For Fail, Does not render entire form when longUrl is empty or not valid', () => {
         
         expect(mountComponent.find('form')).toHaveLength(1)
 
@@ -65,7 +65,7 @@ describe('Test Index component', () => {
     });
 
 
-    it('Display hidden form when longUrl is valid', () => {
+    it('For success, display entire form when longUrl is valid', () => {
         
         expect(mountComponent.find('form')).toHaveLength(1)
 
