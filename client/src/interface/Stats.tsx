@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
-import { getStats } from '../actions/url'
+import { getUrl } from '../actions/url'
 
 type StatsProps = {
     match: any
@@ -9,6 +9,7 @@ type StatsProps = {
 const Stats = ({ match }: StatsProps) => {
 
     const [data, setData] = useState({
+        urlCode: '',
         longUrl: '',
         shortUrl: '',
         views: ''
@@ -18,18 +19,23 @@ const Stats = ({ match }: StatsProps) => {
     useEffect(() => {
 
         const getData = async() => {
-            const res: any = await getStats(match.params.code)
+            const res: any = await getUrl(match.params.code)
             
-            setData({
-                longUrl: res.longUrl,
-                shortUrl: res.shortUrl,
-                views: res.views
-            })
+            if (res) {
+                setData({
+                    urlCode: res.urlCode,
+                    longUrl: res.longUrl,
+                    shortUrl: res.shortUrl,
+                    views: res.views
+                })
+            }
+            
         }
         getData()
 
         return () => {
             setData({
+                urlCode: '',
                 longUrl: '',
                 shortUrl: '',
                 views: ''
@@ -42,20 +48,28 @@ const Stats = ({ match }: StatsProps) => {
     return (
         <Fragment>
             <div className="section-content">
-                <p>Statistical analysis</p>
+                {
+                    data.urlCode ? <Fragment>
+                        <p>Statistical analysis</p>
 
-                <p>Shortcut URL:</p>
+                        <p>Shortcut URL:</p>
 
-                    <p className="weightBold">{data.shortUrl}</p>
+                            <p className="weightBold">{data.shortUrl}</p>
+
+                        <p>Original URL:</p>
+
+                            <p className="weightBold">{data.longUrl}</p>
+
+                        <p>Views:</p>
+
+                            <p className="textCenter weightBold" style={{ fontSize: '32px'}}>{data.views}</p>
+
+                    </Fragment> : <Fragment>
+                        <p>Address not found.</p>
+                    </Fragment>
+                }
                 
-                <p>Original URL:</p>
-
-                    <p className="weightBold">{data.longUrl}</p>
-
-                <p>Views:</p>
-
-                    <p className="textCenter weightBold" style={{ fontSize: '32px'}}>{data.views}</p>
-
+                
 
             </div>
         </Fragment>

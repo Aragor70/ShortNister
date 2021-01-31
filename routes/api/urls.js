@@ -21,10 +21,10 @@ router.get('/', asyncHandler( async(req, res, next) => {
     
 }));
 
-//route GET    api/urls/stats
-//description  get url statisctics 
+//route GET    api/urls
+//description  get single url statisctics
 //access       private
-router.get('/:code/stats', asyncHandler( async(req, res, next) => {
+router.get('/:code', asyncHandler( async(req, res, next) => {
     
     const { code } = req.params;
 

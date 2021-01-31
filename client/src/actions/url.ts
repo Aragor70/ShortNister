@@ -19,11 +19,11 @@ export const getURLs = async() => {
     }
 }
 
-export const getStats = async(code: string) => {
+export const getUrl = async(code: string) => {
 
     try {
 
-        const res = await axios.get(`/api/urls/${code}/stats`)
+        const res = await axios.get(`/api/urls/${code}`)
         
         return res.data
 
