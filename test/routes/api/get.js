@@ -37,7 +37,7 @@ describe('Test GET /api/urls', () => {
         request(router.urls).post('/api/urls')
             .send({ longUrl: "https://github.com/Aragor70/Shortster", customCode: 'ABCDEF' }).then(() => {
 
-            request(router.urls).get('/api/urls/ABCDEF/stats/')
+            request(router.urls).get('/api/urls/ABCDEF/')
                 .then((response) => {
                 
                     expect(response.statusCode).to.equal(200)
@@ -63,7 +63,7 @@ describe('Test GET /api/urls', () => {
     it ('For Fail, Get Error msg for Stats of wrong URLs Code', (done) => {
 
 
-        request(router.urls).get('/api/urls/Wrong_URL_Code/stats/')
+        request(router.urls).get('/api/urls/Wrong_URL_Code/')
             .then((response) => {
                 
                 expect(response.statusCode).to.equal(404);
