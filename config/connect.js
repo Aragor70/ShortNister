@@ -5,7 +5,7 @@ const connect = async () => {
         
         // to run testing virtual DB, switch NODE_ENV on test
 
-        if ( process.env.NODE_ENV === "test" ) {
+        if ( process.env.NODE_ENV !== "production" ) {
 
             const Mockgoose = require('mockgoose').Mockgoose;
             const mockgoose = new Mockgoose(mongoose);

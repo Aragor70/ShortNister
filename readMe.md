@@ -2,7 +2,7 @@
 
 Take control of your URL address. Meet Shortster, to build a shortcut address. Get the quick report of the frequency. Right now you know how many times your partners clicked your address.
 
-### Deployed directory
+### Deployed representation
 https://shortnister.herokuapp.com/
 
 ## Functionality specification
@@ -35,25 +35,31 @@ https://shortnister.herokuapp.com/
 Rename "config/config.env.env" to "config/config.env" and update environment settings to your own.
 
 ## Install dependencies
+
 ```
 npm install
+
+# Run this command in base and client directory.
 ```
-Run App
+
+Run App in development environment
 ```
 npm run dev
 ```
+
 Run API tests
 ```
 npm test
 ```
-Run Clients tests
+Run Client tests
 ```
 npm client-tests
 ```
 
 
-- Version 1.0.0
+- Version prequire 1.0.0
 - License MIT
+- Deployment domain https://shortnister.herokuapp.com/
 
 created by mikey.prus@gmail.com
 
