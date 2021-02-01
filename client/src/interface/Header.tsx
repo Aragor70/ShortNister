@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { History, LocationState } from 'history';
 
 interface HeaderProps {
