@@ -7,10 +7,12 @@ import moment from 'moment';
 
 interface OverviewParams {
     code: string
+    
 }
 
 interface OverviewProps extends RouteComponentProps<OverviewParams> {
-    history: History<LocationState>
+    history: History<LocationState>,
+    match: any
 }
 
 const Overview = ({ match, history }: OverviewProps) => {

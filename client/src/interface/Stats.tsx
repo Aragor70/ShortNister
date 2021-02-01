@@ -9,7 +9,8 @@ interface MatchParams {
 }
 
 interface StatsProps extends RouteComponentProps<MatchParams> {
-    history: History<LocationState>
+    history: History<LocationState>,
+    match: any
 }
 
 
