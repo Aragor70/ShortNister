@@ -20,10 +20,14 @@ const urls = app.use('/api/urls', require('./routes/api/urls'));
 // handle errors
 app.use(errorHandler)
 
-// get index directory
-app.get('*', (req, res) => {
+if (process.env.NODE_ENV === 'production') {
+
+    // get index directory
+    app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
 })
+}
+
 
 const PORT = process.env.PORT || 5000;
 

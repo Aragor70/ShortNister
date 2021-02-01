@@ -43,7 +43,7 @@ Rename "config/config.env.env" to "config/config.env" and update environment set
 ```
 npm install
 
-# Run this command in base and client directory.
+# Run this command in the base and client directory.
 ```
 
 Run App in development environment
