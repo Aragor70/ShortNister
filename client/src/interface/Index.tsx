@@ -37,8 +37,8 @@ const Index = ({ history }: IndexProps) => {
     return (
         <Fragment>
             <div className="section-content">
-                <p>Meet ShortNister</p>
-                    Take control of your URL address. Meet ShortNister, to build a shortcut address. 
+                <p>Meet Shortster</p>
+                    Take control of your URL address. Meet Shortster, to build a shortcut address. 
                     Get the quick report of the frequency. 
                     Right now you know how many times your partners clicked your address.
 
@@ -64,7 +64,7 @@ const Index = ({ history }: IndexProps) => {
 
                             <label>
                                 <p>Customize your URL shortcut (at least 4 characters long)</p>
-                                <p>https://shortnister.herokuapp.com/
+                                <p>http://localhost:5000/
                                     <input type="text" name="customCode" value={ formData.customCode || '' } onChange={e=> handleChange(e)} />
                                 </p>
                             </label>
