@@ -3,7 +3,7 @@ const asyncHandler = require('../../middlewares/async');
 const ErrorResponse = require('../../tools/ErrorResponse');
 const router = express.Router();
 const validUrl = require('valid-url');
-const { nanoid } = require('nanoid');
+const { customAlphabet } = require('nanoid');
 const Url = require('../../models/Url');
 
 
@@ -57,10 +57,16 @@ router.post('/', asyncHandler( async(req, res, next) => {
 
     if (customCode) {
         shortCode = customCode
-    } else {
-        shortCode = nanoid(6)
-    }
+        if (!customCode.match('/[A-Za-z0-9]/')) {
+            return next(new ErrorResponse('Please enter alphanumeric value.', 422))
+        }
 
+    } else {
+        const nanoid = customAlphabet("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTVXYZ", 6)
+
+        shortCode = nanoid()
+    }
+    
     let isMatch = await Url.findOne({ urlCode: shortCode })
     if (isMatch) {
         return next(new ErrorResponse('Your code already exists. Please enter the new one.', 422))

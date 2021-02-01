@@ -29,7 +29,11 @@ https://shortnister.herokuapp.com/
 - A git repository with clean commit history.
 - Good REST practices.
 
+## Recommend product suggestions
 
+- create private repository of users URL collection
+- give the website a business design
+- give the website short domain name
 
 ## Usage
 Rename "config/config.env.env" to "config/config.env" and update environment settings to your own.
