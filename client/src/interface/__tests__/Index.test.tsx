@@ -4,8 +4,8 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 describe('Test Index component', () => {
-    
-    const history = createBrowserHistory();
+    const route = '/'
+    const history = createBrowserHistory({ initialEntries: [route] });
 
     let mountComponent: any;
 
@@ -17,11 +17,11 @@ describe('Test Index component', () => {
                 <Index />
             </Router>)
             
-    })
+    });
 
 
 
-    it('For success, Render Index component correctly', () => {
+    it("For success, Route '/' renders interface/Index.tsx Component", () => {
 
         // render component once
         expect(mountComponent).toHaveLength(1);

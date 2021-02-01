@@ -9,13 +9,18 @@ describe("Test Overview component", () => {
     const route = "/Unknown_Code/overview"
     let history = createMemoryHistory({ initialEntries: [route] })
 
-    const mountComponent = mount(
-        <Router history={history} >
-            <Overview 
-                match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/overview", url: "" }}
-            />
-        </Router>
-    );
+    let mountComponent
+    
+    beforeAll(() => {
+        mountComponent = mount(
+            <Router history={history} >
+                <Overview 
+                    match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/overview", url: "" }}
+                />
+            </Router>
+        );
+    })
+    
 
 
     it("For success, Render Overview 1 component correctly", () => {

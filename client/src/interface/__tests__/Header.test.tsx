@@ -6,16 +6,18 @@ import { createBrowserHistory } from 'history';
 
 describe("Test Header component", () => {
 
-    const history = createBrowserHistory();
+    const route = '/'
+    const history = createBrowserHistory({ initialEntries: [route] });
 
     const mountComponent = mount(
         
         <Router history={history}>
             <Header />
-        </Router>)
+        </Router>
+    );
        
     
-    it("For success, Render Header 1 component correctly", () => {
+    it("For success, Route '/' renders interface/Header.tsx Component", () => {
         expect(mountComponent).toHaveLength(1)
         expect(mountComponent.find('.header-content')).toHaveLength(1)
 

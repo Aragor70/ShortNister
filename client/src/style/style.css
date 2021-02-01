@@ -37,6 +37,7 @@ a, button
     font-weight: 400;
     overflow: hidden;
     font-size: 22px;
+    cursor: pointer;
 }
 a:hover, button:hover
 {

@@ -7,14 +7,18 @@ import Stats from '../Stats';
 describe("Test Stats component", () => {
     const route = "/Unknown_Code/stats"
     const history = createMemoryHistory({ initialEntries: [route] })
+    let mountComponent;
 
-    const mountComponent = mount(
-        <Router history={history} >
-            <Stats 
-                match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/stats", url: "" }}
-            />
-        </Router>
-    );
+    beforeAll(() => {
+        mountComponent = mount(
+            <Router history={history} >
+                <Stats 
+                    match={{ params: {code: 'Unknown_Code'}, isExact: true, path: "/Unknown_Code/stats", url: "" }}
+                />
+            </Router>
+        );
+    })
+    
 
 
     it("For success, Render Stats 1 component correctly", () => {

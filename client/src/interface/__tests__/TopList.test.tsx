@@ -7,13 +7,18 @@ describe("Test Toplist component", () => {
     
 
     const route = "/"
-    let history = createMemoryHistory({ initialEntries: [route] })
+    const history = createMemoryHistory({ initialEntries: [route] })
+    let mountComponent;
 
-    const mountComponent = mount(
-        <Router history={history} >
-            <Toplist />
-        </Router>
-    );
+    beforeAll(() => {
+        mountComponent = mount(
+            <Router history={history} >
+                <Toplist />
+            </Router>
+        );
+    })
+
+   
 
 
     it("For success, Render Toplist 1 component correctly", () => {

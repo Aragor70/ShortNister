@@ -9,7 +9,7 @@ describe("Test App component", () => {
 
     const history = createBrowserHistory()
     
-    it("For success, Component renders one dom element", () => {
+    it("For success, Component renders App dom element", () => {
         
         const div = document.createElement('div');
 

@@ -6,8 +6,7 @@ const errorHandler = require('./middlewares/error');
 const conn = require('./config/connect');
 const app = express()
 
-// static folder
-app.use(express.static('client/build'))
+
 
 // connect database
 conn.connect()
@@ -22,7 +21,9 @@ const urls = app.use('/api/urls', require('./routes/api/urls'));
 app.use(errorHandler)
 
 if (process.env.NODE_ENV === 'production') {
-
+    // static folder
+    app.use(express.static('client/build'))
+    
     // get index directory
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))

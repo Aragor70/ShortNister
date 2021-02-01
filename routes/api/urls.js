@@ -57,18 +57,20 @@ router.post('/', asyncHandler( async(req, res, next) => {
 
     if (customCode) {
         shortCode = customCode
-        if (!customCode.match('/[A-Za-z0-9]/')) {
+        
+        if (!customCode.match(/^[0-9a-zA-Z]+$/)) {
             return next(new ErrorResponse('Please enter alphanumeric value.', 422))
         }
 
     } else {
-        const nanoid = customAlphabet("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTVXYZ", 6)
-
-        shortCode = nanoid()
+        const nanoid = await customAlphabet("1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTVXYZ", 6)
+        
+        shortCode = await nanoid()
     }
     
     let isMatch = await Url.findOne({ urlCode: shortCode })
     if (isMatch) {
+        
         return next(new ErrorResponse('Your code already exists. Please enter the new one.', 422))
     }
 
