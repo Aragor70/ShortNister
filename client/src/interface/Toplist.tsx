@@ -3,7 +3,7 @@ import { getURLs } from '../actions/url';
 
 
 
-type Url = {
+type UrlType = {
     shortUrl: string,
     views: number
 }
@@ -32,7 +32,7 @@ const Toplist = () => {
             <div className="section-content">
                 <p>Top 3 URLs</p>
                 {
-                    urls.length === 0 ? 'The list is empty' : urls.map((url: Url) => <p className="textCenter" ><span onClick={e => window.open(url.shortUrl, "_blank")}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
+                    urls.length === 0 ? 'The list is empty' : urls.map((url: UrlType) => <p className="textCenter" ><span onClick={e => window.open(url.shortUrl, "_blank")}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
                 }
             </div>
         </Fragment>

@@ -1,18 +1,27 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
-import { getUrl } from '../actions/url'
+import { withRouter, match, RouteComponentProps } from 'react-router-dom';
+import { getUrl } from '../actions/url';
+import { History, LocationState } from 'history';
+import moment from 'moment';
 
-type StatsProps = {
-    match: any
+interface MatchParams {
+    code: string
 }
 
-const Stats = ({ match }: StatsProps) => {
+interface StatsProps extends RouteComponentProps<MatchParams> {
+    history: History<LocationState>
+}
+
+
+const Stats = ({ match, history }: StatsProps) => {
 
     const [data, setData] = useState({
         urlCode: '',
         longUrl: '',
         shortUrl: '',
-        views: ''
+        views: '',
+        lastVisit: '',
+        date: ''
     })
     
     
@@ -26,7 +35,9 @@ const Stats = ({ match }: StatsProps) => {
                     urlCode: res.urlCode,
                     longUrl: res.longUrl,
                     shortUrl: res.shortUrl,
-                    views: res.views
+                    views: res.views,
+                    lastVisit: res.lastVisit,
+                    date: res.date
                 })
             }
             
@@ -38,7 +49,9 @@ const Stats = ({ match }: StatsProps) => {
                 urlCode: '',
                 longUrl: '',
                 shortUrl: '',
-                views: ''
+                views: '',
+                lastVisit: '',
+                date: ''
             })
         }
 
@@ -64,10 +77,41 @@ const Stats = ({ match }: StatsProps) => {
 
                             <p className="textCenter weightBold" style={{ fontSize: '32px'}}>{data.views}</p>
 
+                        {
+                            data.lastVisit && <Fragment>
+                                <p> The last visit was: </p>
+                                <p style={{textAlign: 'center'}}>
+                                {
+                                    Date.parse(data.lastVisit) < Date.now() - 86400000 ? 
+                                    
+                                    `${moment(data.lastVisit).format('DD-MM-YYYY')} at ${moment(data.lastVisit).format('HH:mm:SS')}` : `Today at ${moment(data.lastVisit).format('HH:mm:SS')}` 
+                                
+                                }
+                                </p>
+                                
+                                
+                            </Fragment>
+                        }
+                        {
+                            data.date && <Fragment>
+                                <p> URL registration was: </p>
+                                <p style={{textAlign: 'center'}}>
+                                {
+                                    Date.parse(data.date) < Date.now() - 86400000 ? 
+                                    
+                                    `${moment(data.date).format('DD-MM-YYYY')} at ${moment(data.date).format('HH:mm:SS')}` : `Today at ${moment(data.date).format('HH:mm:SS')}` 
+                                
+                                }
+                                </p>
+                            </Fragment>
+                        }
                     </Fragment> : <Fragment>
                         <p>Address not found.</p>
                     </Fragment>
                 }
+                <div className="options">
+                    <button onClick={e=> history.push(`/${data.urlCode}/overview`)}>Go to overview</button>
+                </div>
                 
                 
 

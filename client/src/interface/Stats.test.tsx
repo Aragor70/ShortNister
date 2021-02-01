@@ -4,7 +4,6 @@ import { createMemoryHistory } from 'history';
 import Stats from './Stats';
 
 
-
 describe("Test Stats component", () => {
     const route = "/Unknown_Code/stats"
     const history = createMemoryHistory({ initialEntries: [route] })
@@ -29,7 +28,6 @@ describe("Test Stats component", () => {
         const x = 'Address not found.'
         expect(mountComponent.text()).toContain(x)
         
-
     });
 
     

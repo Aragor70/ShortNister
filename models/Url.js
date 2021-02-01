@@ -19,6 +19,10 @@ const UrlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    lastVisit: {
+        type: Date,
+        default: null
+    },
     date: {
         type: Date,
         default: Date.now

@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha --timeout 30000 --recursive --exit",
+    "client-tests": "npm test --prefix client",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",

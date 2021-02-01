@@ -19,7 +19,8 @@ router.get('/:code', asyncHandler( async(req, res, next) => {
     }
 
     urlAddress.views += 1
-
+    urlAddress.lastVisit = Date.now()
+    
     await urlAddress.save()
 
 

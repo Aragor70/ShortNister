@@ -3,12 +3,13 @@ import { withRouter } from 'react-router-dom';
 import { postUrl } from '../actions/url';
 import validUrl from 'valid-url'
 import Toplist from './Toplist';
+import { History, LocationState } from 'history';
 
-type IndexType = {
-    history: any
+interface IndexProps {
+    history: History<LocationState>
 }
 
-const Index = ({ history }: IndexType) => {
+const Index = ({ history }: IndexProps) => {
 
     const [isValid, setIsValid] = useState(false)
     const [formData, setFormData] = useState({

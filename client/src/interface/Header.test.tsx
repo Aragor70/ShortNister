@@ -10,9 +10,9 @@ describe("Test Header component", () => {
 
     const mountComponent = mount(
         
-            <Router history={history}>
-                <Header />
-            </Router>)
+        <Router history={history}>
+            <Header />
+        </Router>)
        
     
     it("For success, Render Header 1 component correctly", () => {
