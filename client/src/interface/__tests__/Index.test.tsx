@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import Index from './Index';
+import Index from '../Index';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 

@@ -1,8 +1,7 @@
 import { mount, shallow } from 'enzyme';
-import Toplist from './Toplist';
-import { MemoryRouter, Router } from 'react-router-dom';
+import Toplist from '../Toplist';
+import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import App from '../App';
 
 describe("Test Toplist component", () => {
     
