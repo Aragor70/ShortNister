@@ -17,6 +17,11 @@ const urls = app.use('/api/urls', require('./routes/api/urls'));
 // handle errors
 app.use(errorHandler)
 
+// get index directory
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+})
+
 const PORT = process.env.PORT || 5000;
 
 // listen the reqests at custom PORT or default 5000
