@@ -1,4 +1,4 @@
-// Error template constructor class
+// Error template of constructor class
 class ErrorResponse extends Error {
     constructor(message, statusCode) {
         super(message)
