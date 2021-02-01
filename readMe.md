@@ -2,6 +2,9 @@
 
 Take control of your URL address. Meet Shortster, to build a shortcut address. Get the quick report of the frequency. Right now you know how many times your partners clicked your address.
 
+### Deployed directory
+https://shortnister.herokuapp.com/
+
 ## Functionality specification
 
 - A user can submit a URL and receive a unique shortcode in response.

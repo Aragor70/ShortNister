@@ -13,7 +13,7 @@ const Header = ({ history }: HeaderProps ) => {
     return (
         <Fragment>
             <div className="header-content">
-                <h1 onClick={e=> history.push('/')}>Shortster</h1>
+                <h1 onClick={e=> history.push('/')}>ShortNister</h1>
             </div>
         </Fragment>
     );
