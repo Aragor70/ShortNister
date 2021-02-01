@@ -64,7 +64,7 @@ const Index = ({ history }: IndexProps) => {
 
                             <label>
                                 <p>Customize your URL shortcut (at least 4 characters long)</p>
-                                <p>http://localhost:5000/
+                                <p>https://shortnister.herokuapp.com/
                                     <input type="text" name="customCode" value={ formData.customCode || '' } onChange={e=> handleChange(e)} />
                                 </p>
                             </label>
