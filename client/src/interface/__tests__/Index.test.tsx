@@ -1,11 +1,11 @@
 import { mount } from 'enzyme';
 import Index from '../Index';
 import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { createMemoryHistory } from 'history';
 
 describe('Test Index component', () => {
     const route = '/'
-    const history = createBrowserHistory({ initialEntries: [route] });
+    const history = createMemoryHistory({ initialEntries: [route] });
 
     let mountComponent: any;
 
