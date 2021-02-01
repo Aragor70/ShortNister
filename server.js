@@ -1,4 +1,5 @@
 require('dotenv').config({ path: './config/config.env' });
+const path = require('path')
 const express = require('express');
 const colors = require('colors');
 const errorHandler = require('./middlewares/error');
