@@ -23,9 +23,9 @@ app.use(errorHandler)
 if (process.env.NODE_ENV === 'production') {
 
     // get index directory
-    app.get('/*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-})
+    app.get('*', function (req, res){
+        res.sendFile(path.resolve(__dirname, 'index.html'))
+    });
 }
 
 
