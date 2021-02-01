@@ -5,6 +5,9 @@ const errorHandler = require('./middlewares/error');
 const conn = require('./config/connect');
 const app = express()
 
+// static folder
+app.use(express.static('client/build'))
+
 // connect database
 conn.connect()
 
