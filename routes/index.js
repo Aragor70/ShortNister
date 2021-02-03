@@ -6,7 +6,7 @@ const Url = require('../models/Url');
 
 //route GET    /:code
 //description  redirect from short URL to original URL
-//access       private
+//access       public
 router.get('/:code', asyncHandler( async(req, res, next) => {
     
     const { code } = req.params;
