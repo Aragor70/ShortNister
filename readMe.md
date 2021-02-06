@@ -67,3 +67,7 @@ npm client-tests
 
 created by mikey.prus@gmail.com
 
+- Version prequire 1.0.0
+
+<img src="./prequire-1-0-0.png" width="100%" />
+
