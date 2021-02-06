@@ -37,8 +37,8 @@ const Index = ({ history }: IndexProps) => {
     return (
         <Fragment>
             <div className="section-content">
-                <p>Meet Shortster</p>
-                    Take control of your URL address. Meet Shortster, to build a shortcut address. 
+                <p>Meet ShortNister</p>
+                    Take control of your URL address. Meet ShortNister, to build a shortcut address. 
                     Get the quick report of the frequency. 
                     Right now you know how many times your partners clicked your address.
 
