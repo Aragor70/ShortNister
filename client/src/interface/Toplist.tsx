@@ -32,7 +32,7 @@ const Toplist = () => {
             <div className="section-content">
                 <p>Top 3 URLs</p>
                 {
-                    urls.length === 0 ? 'The list is empty' : urls.sort((a, b) => parseInt(a.views) - parseInt(b.views)).slice(0, 3).map((url: UrlType) => <p className="textCenter" ><span style={{ cursor: 'pointer' }} onClick={e => window.open(url.shortUrl, "_blank")}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
+                    urls.length === 0 ? 'The list is empty' : urls.sort((a: any, b: any) => parseInt(a.views) - parseInt(b.views)).slice(0, 3).map((url: UrlType) => <p className="textCenter" ><span style={{ cursor: 'pointer' }} onClick={e => window.open(url.shortUrl, "_blank")}>{url.shortUrl} | <b>{url.views} views</b></span></p>)
                 }
             </div>
         </Fragment>
