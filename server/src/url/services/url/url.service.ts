@@ -111,7 +111,7 @@ export class UrlService {
                 switchMap(() => {
         
                     
-                    newAddress = `${req.protocol}://${req.get('Host')}/` + shortCode
+                    newAddress = process.env.Base_Url + shortCode
 
                     return from(
                         
