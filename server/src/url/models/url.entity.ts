@@ -23,7 +23,7 @@ export class UrlEntity {
     views: number;
 
     @Column({ nullable: true, default: null })
-    lastVisit: string;
+    lastVisit: Date;
 
     @Column({ default: new Date() })
     date: Date;

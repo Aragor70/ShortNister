@@ -18,7 +18,7 @@ export class Url {
 
   views?: string;
 
-  lastVisit?: string;
+  lastVisit?: Date;
 
   date?: Date;
 }

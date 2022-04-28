@@ -14,6 +14,13 @@ export class UrlService {
             private readonly urlRepository: Repository<Url>,
         ) {}
 
+        updateOne(id: number, url: Url): Observable<Url> {
+            console.log(url)
+            return from(this.urlRepository.update(id, url)).pipe(
+                switchMap(() => this.findOneByCode(url.urlCode))
+            );
+        }
+
         findOneByCode(code: string): Observable<Url> {
             return from(
                 this.urlRepository.findOne({ urlCode: code }),
