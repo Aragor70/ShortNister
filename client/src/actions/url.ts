@@ -9,7 +9,7 @@ export const getURLs = async() => {
 
     try {
         
-        const res = await axios.get('http://localhost:5000/api/url')
+        const res = await axios.get('https://redirect.m-prus.uk/api/url')
         
         return res.data
 
@@ -23,7 +23,7 @@ export const getUrl = async(code: string) => {
 
     try {
 
-        const res = await axios.get(`http://localhost:5000/api/url/${code}`)
+        const res = await axios.get(`https://redirect.m-prus.uk/api/url/${code}`)
         
         return res.data
 
@@ -42,7 +42,7 @@ export const postUrl = async(formData: formType, history: any) => {
     }
     try {
 
-        const res = await axios.post('http://localhost:5000/api/url', formData, config)
+        const res = await axios.post('https://redirect.m-prus.uk/api/url', formData, config)
         
         history.push(`/${res.data.urlAddress.urlCode}/overview`)
         return res
