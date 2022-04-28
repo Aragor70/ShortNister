@@ -1,5 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Request } from 'express';
 import { customAlphabet } from 'nanoid';
 import { from, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Url } from 'src/url/models/url.class';
@@ -15,7 +16,6 @@ export class UrlService {
         ) {}
 
         updateOne(id: number, url: Url): Observable<Url> {
-            console.log(url)
             return from(this.urlRepository.update(id, url)).pipe(
                 switchMap(() => this.findOneByCode(url.urlCode))
             );
@@ -66,7 +66,7 @@ export class UrlService {
             )
         }
         
-        registerUrl(url: any): Observable<Url> {
+        registerUrl(url: any, req: Request): Observable<Url> {
             const { longUrl, customCode } = url;
 
             let shortCode: string;
@@ -111,7 +111,7 @@ export class UrlService {
                 switchMap(() => {
         
                     
-                    newAddress = process.env.Base_Url + shortCode
+                    newAddress = `${req.protocol}://${req.get('Host')}/` + shortCode
 
                     return from(
                         
