@@ -17,6 +17,18 @@ export class UrlService {
         findOneByCode(code: string): Observable<Url> {
             return from(
                 this.urlRepository.findOne({ urlCode: code }),
+            ).pipe(
+
+                map((url: Url) => {
+
+                    if (!url)
+                        throw new HttpException(
+                            'Given url does not exist in our database.',
+                            HttpStatus.BAD_REQUEST);
+
+                    return url;
+                })
+                
             )
         }
 
@@ -25,8 +37,15 @@ export class UrlService {
             return from(this.urlRepository.find()).pipe(
 
                 map((url: Url[]) => {
-                    return url;
+
+                    if (!url)
+                        throw new HttpException(
+                            'Server error.',
+                            HttpStatus.SERVICE_UNAVAILABLE);
+
+                    return url.sort((a: Url, b: Url) => b.id - a.id);
                 })
+                
             )
             
         }
