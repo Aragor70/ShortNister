@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RouterModule } from 'nest-router';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { routes } from './routes';
@@ -9,6 +11,9 @@ import { UrlModule } from './url/url.module';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     ConfigModule.forRoot({ isGlobal: true }),
     RouterModule.forRoutes(routes),
     TypeOrmModule.forRoot({
@@ -22,7 +27,7 @@ import { UrlModule } from './url/url.module';
       synchronize: true,
     }),
     AuthModule,
-    UrlModule
+    UrlModule,
   ],
   controllers: [AppController],
   providers: [],
