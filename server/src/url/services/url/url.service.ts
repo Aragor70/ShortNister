@@ -31,7 +31,7 @@ export class UrlService {
                     if (!url)
                         throw new HttpException(
                             'Given url does not exist in our database.',
-                            HttpStatus.BAD_REQUEST);
+                            HttpStatus.NOT_FOUND);
 
                     return url;
                 })
