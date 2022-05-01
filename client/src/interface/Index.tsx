@@ -57,14 +57,15 @@ const Index = ({ history }: IndexProps) => {
                         formData.longUrl.length > 0 && isValid ? <Fragment>
                             <p>Create a random 6 characters long URL shortcut</p>
                             <button type="submit" className="randomize">
-                                Generate random shortcut
+                                Generate a random code
                             </button>
 
                             <p>or</p>
 
                             <label>
-                                <p>Customize your URL shortcut (at least 4 characters long)</p>
-                                <p>https://redirect.m-prus.uk/
+                                <p>Customize the URL code (Use letters, numbers, dashes (-), or underlines (_))</p>
+                                <p>
+                                    <span>https://redirect.m-prus.uk/</span>
                                     <input type="text" name="customCode" value={ formData.customCode || '' } onChange={e=> handleChange(e)} />
                                 </p>
                             </label>
@@ -77,9 +78,16 @@ const Index = ({ history }: IndexProps) => {
                     
                 </form>
 
-                <Toplist />
+                
 
 
+            </div>
+            <div className="section-content">
+                <h3 className="redirect">
+                    <span onClick={()=> history.push('list')}>
+                        List of all available urls
+                    </span>
+                </h3>
             </div>
         </Fragment>
     );

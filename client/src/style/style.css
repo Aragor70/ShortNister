@@ -20,7 +20,7 @@ body, html
     position: relative;
     overflow-x: hidden;
     overflow-y: hidden;
-    font-size: 18.5px;
+    font-size: 22.5px;
 }
 
 a, button, input
@@ -79,5 +79,15 @@ h1
 .weightBold
 {
     font-weight: bold;
+}
+
+main > .section-content {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+footer {
+    max-width: 1920px;
+    margin: 0 auto;
 }
 

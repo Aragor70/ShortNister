@@ -1,0 +1,45 @@
+footer {
+    min-height: 90px;
+    padding: 20px 40px;
+
+    font-size: 16px;
+}
+footer > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 768px) {
+
+    footer {
+        min-height: 90px;
+        padding: 20px 20px;
+    }
+}
+
+footer img {
+    width: 65px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+footer .icons label:hover {
+    background-color: #FFC409;
+}
+
+.icons {
+    margin-left: auto;
+    display: flex;
+    gap: 20px;
+}
+.icons label {
+    padding: 5.5px;
+    border-radius: 25px;
+}
+.copy {
+    font-size: 15.5px;
+    text-align: center;
+}
+footer > div span {
+    cursor: pointer;
+}

@@ -16,6 +16,55 @@
 .section-content
 {
     width: 100%;
-    height: 100%;
+    height: max-content;
+    min-height: 220px;
     
+}
+.section-content > p {
+    padding: 20px 0;
+}
+
+.urls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 40px 40px !important;
+    gap: 20px;
+}
+
+.urls span {
+    cursor: pointer;
+}
+
+.urls h3 {
+    font-size: 32px;
+}
+
+
+.urls tr td:nth-child(2), td:nth-child(3) {
+    padding: 0 20px;
+}
+
+.urls td:nth-child(2), th {
+    text-align: center;
+}
+.urls th {
+    padding: 20px;
+}
+
+.redirect span {
+    padding: 20px;
+    background: #C8102E;
+    color: #fff;
+    font-weight: 900;
+    border-radius: 25px;
+    margin-left: auto;
+    cursor: pointer;
+    text-align: center;
+}
+
+.redirect {
+    display: flex;
 }
